@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 
-# 加载所有API
-from mcdreforged.api.all import *
-# 加载库文件
+from mcdreforged.api.all import Literal, Integer
+
 from blhx.libs import add_live_room, del_live_room, get_room_list, print_ver
 from blhx.libs import room_reload_sync, room_start_sync, room_stop_sync
-'''
-    命令树
-'''
 
+'''
+    Build Help Command
+'''
 def add_help_command(server):
     server.register_help_message('!!blhx', 'BiliBili弹幕姬')
     server.register_help_message('!!blhx room list', '获取房间列表')
@@ -18,7 +17,9 @@ def add_help_command(server):
     server.register_help_message('!!blhx room stop ', '停止同步')
     server.register_help_message('!!blhx room reload ', '重新运行')
 
-
+'''
+    Build Use Command
+'''
 def add_command(server):
     server.register_command(
         Literal('!!blhx').
