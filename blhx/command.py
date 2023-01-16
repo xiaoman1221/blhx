@@ -3,19 +3,17 @@
 # 加载所有API
 from mcdreforged.api.all import *
 # 加载库文件
-from bilibili_live_mc_msg.libs import add_live_room, del_live_room, get_room_list, print_help_message
-from bilibili_live_mc_msg.libs import room_reload_sync, room_start_sync, room_stop_sync
-live_status =False
+from blhx.libs import add_live_room, del_live_room, get_room_list, print_ver
+from blhx.libs import room_reload_sync, room_start_sync, room_stop_sync
 '''
     命令树
 '''
 
 def add_help_command(server):
     server.register_help_message('!!blhx', 'BiliBili弹幕姬')
-    server.register_help_message('!!blhx help', '获得blhx的帮助信息')
     server.register_help_message('!!blhx room list', '获取房间列表')
     server.register_help_message('!!blhx room add <直播间号>', '添加房间到列表')
-    server.register_help_message('!!blhx room rel <房间号>', '移除列表里的房间')
+    server.register_help_message('!!blhx room del <房间号>', '移除列表里的房间')
     server.register_help_message('!!blhx room start ', '开始同步')
     server.register_help_message('!!blhx room stop ', '停止同步')
     server.register_help_message('!!blhx room reload ', '重新运行')
@@ -52,6 +50,4 @@ def add_command(server):
             then(
                 Literal('stop').runs(lambda src: room_stop_sync(src))
             )
-        ).
-        then(
-            Literal('help').runs(lambda src: print_help_message(src))))
+        ).runs(lambda src: print_ver(src)))

@@ -2,34 +2,26 @@
 
 # 加载API
 from mcdreforged.api.all import *
-# from bilibili_live_mc_msg import blivedm
-from bilibili_live_mc_msg import *
+from blhx import *
 
-# 加载依赖
-import asyncio
-import random
-import time
 # 直播间ID的取值,看直播间URL
 # 例子：https://live.bilibili.com/13007212 ,其中13007212就是直播间ID
 # 支持多个直播间轮询
 INIT_ROOMS = []
 ROOM_IDS = []
 
-# 指令树相关
-def print_help_message(src: CommandSource):
-    src.reply('帮助占位符')
-    return True
-
-
-def print_unknown_argument_message(src: CommandSource):
-    src.reply('未知帮助信息')
+# 打印版本信息
+def print_ver(src: CommandSource):
+    src.reply('您已成功安装blhx')
+    src.reply('该Blhx版本号为：2.7')
+    src.reply('请使用!!help 获取相关帮助')
+    return 0
 
 
 # 添加房间 
 def add_live_room(roomid, src: CommandSource):
     
     for item_id in ROOM_IDS:
-        # src.reply(item_id)
         if item_id == roomid:
             src.reply("已存在")
             return 0
@@ -53,7 +45,7 @@ def del_live_room(count, src: CommandSource):
     else:
         if ROOM_IDS[count] in ROOM_IDS:
             del ROOM_IDS[count]  ## 使用del删除元素
-            src.reply('已删除')
+            src.reply('已删除') 
         else:
             src.reply('未知房间')
 
@@ -69,33 +61,13 @@ def get_room_list(src: CommandSource):
                 src.reply(
                     "房间号：[" + str(room_num) + "]" + "  |  房间ID："+ str(item_id))  # 遍历List
                 
-
 def room_start_sync(src: CommandSource):
-    run_sync_main(src)
-    src.reply("开始了")
+    src.reply("start debuger")
 
-def room_stop_sync(src, live_status):
-    if live_status == True:
-        live_status == False
-        src.reply("结束了")
-    else:
-        src.reply("未运行")
+def room_stop_sync(src):
+    src.reply("stop debuger")
 
 
-def room_reload_sync(src, live_status):
-    if live_status == True:
-        src.reply("正在重新加载")
-        live_status == False
-        live_status == True
-        src.reply("重新加载成功")
-    else:
-        src.reply("未运行")
+def room_reload_sync(src):
+    src.reply("reload debuger")
 
-
-# 主程序 
-@new_thread("Sync Start!")
-def run_sync_main(src):
-    while True:
-        src.reply("Sync Ses")
-        time.sleep(1)
-        

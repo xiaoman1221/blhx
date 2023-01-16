@@ -1,14 +1,14 @@
 {
-    "id": "bilibili_live_mc_msg",
-    "version": "0.12.2",
+    "id": "blhx",
+    "version": "0.0.1",
     "name": "bilibili直播同步",
     "author": [
         "xiaoman1221"
     ],
-    "link": "https://github.com/xiaoman1221/bilibili_live_mc_msg",
+    "link": "https://github.com/xiaoman1221/blhx",
     "description": {
-        "en_us": "The plug-in realizes the information and live broadcast intercommunication of MineCraft information column",
-        "zh_cn": "这个插件可以实现我的世界信息和bilibili直播弹幕传输"
+        "en_us": "This plug-in can synchronize my world information with bilibilibili live screen",
+        "zh_cn": "这个插件可以实现我的世界信息和bilibili直播弹幕同步"
     },
     "dependencies": {
         "mcdreforged": ">=2.2.0"
